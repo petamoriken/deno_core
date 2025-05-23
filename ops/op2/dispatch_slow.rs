@@ -246,6 +246,7 @@ pub(crate) fn get_prefix(generator_state: &mut GeneratorState) -> String {
   } else if generator_state.use_this_cppgc {
     format!("Failed to construct '{}'", generator_state.self_ty)
   } else {
+    println!("{:?}", generator_state);
     format!(
       "Failed to execute '{}.{}'",
       generator_state.self_ty, generator_state.name

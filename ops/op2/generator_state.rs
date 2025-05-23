@@ -3,7 +3,7 @@
 use proc_macro2::Ident;
 use proc_macro2::TokenStream;
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub struct GeneratorState {
   pub name: Ident,
   /// Identifiers for each of the arguments of the original function
