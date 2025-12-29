@@ -969,7 +969,7 @@ pub fn op_set_promise_hooks<'s, 'i>(
 // OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
 // USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-#[op2]
+#[op2(reentrant)]
 pub fn op_get_proxy_details<'s, 'i>(
   scope: &mut v8::PinScope<'s, 'i>,
   proxy: v8::Local<'s, v8::Value>,
