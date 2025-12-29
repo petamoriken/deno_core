@@ -198,7 +198,7 @@ pub async fn op_error_async_deferred() -> Result<(), JsErrorBox> {
 pub async fn op_void_async_deferred() {}
 
 /// Remove a resource from the resource table.
-#[op2(fast)]
+#[op2(fast, reentrant)]
 pub fn op_close(
   state: Rc<RefCell<OpState>>,
   #[smi] rid: ResourceId,
@@ -210,7 +210,7 @@ pub fn op_close(
 
 /// Try to remove a resource from the resource table. If there is no resource
 /// with the specified `rid`, this is a no-op.
-#[op2(fast)]
+#[op2(fast, reentrant)]
 pub fn op_try_close(state: Rc<RefCell<OpState>>, #[smi] rid: ResourceId) {
   if let Ok(resource) = state.borrow_mut().resource_table.take_any(rid) {
     resource.close();
